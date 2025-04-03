@@ -1,4 +1,4 @@
-use std::{fmt, ops};
+use core::{fmt, ops};
 
 use crate::{Expression, PartialConstraint, Strength, Term, Variable};
 

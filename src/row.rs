@@ -1,4 +1,4 @@
-use std::collections::{hash_map::Entry, HashMap};
+use hashbrown::{hash_map::Entry, HashMap};
 
 #[derive(Debug, Clone)]
 pub struct Row {

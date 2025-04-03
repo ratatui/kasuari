@@ -1,4 +1,4 @@
-use std::{
+use core::{
     ops,
     sync::atomic::{AtomicUsize, Ordering},
 };
@@ -274,6 +274,7 @@ impl ops::Div<f32> for Variable {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use alloc::vec;
 
     const LEFT: Variable = Variable(0);
     const RIGHT: Variable = Variable(1);

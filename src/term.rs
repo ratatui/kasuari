@@ -1,4 +1,5 @@
-use std::ops;
+use alloc::vec;
+use core::ops;
 
 use crate::{Expression, Variable};
 

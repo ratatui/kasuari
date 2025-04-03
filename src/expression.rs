@@ -1,4 +1,5 @@
-use std::ops;
+use alloc::{vec, vec::Vec};
+use core::ops;
 
 use crate::{Term, Variable};
 

@@ -65,7 +65,7 @@ impl Strength {
     }
 }
 
-impl std::ops::Add<Strength> for Strength {
+impl core::ops::Add<Strength> for Strength {
     type Output = Strength;
 
     /// Add two strengths together, clipping the result to the legal range
@@ -75,7 +75,7 @@ impl std::ops::Add<Strength> for Strength {
     }
 }
 
-impl std::ops::Sub<Strength> for Strength {
+impl core::ops::Sub<Strength> for Strength {
     type Output = Strength;
 
     /// Subtract one strength from another, clipping the result to the legal range
@@ -85,7 +85,7 @@ impl std::ops::Sub<Strength> for Strength {
     }
 }
 
-impl std::ops::AddAssign<Strength> for Strength {
+impl core::ops::AddAssign<Strength> for Strength {
     /// Perform an in-place addition of two strengths, clipping the result to the legal range
     #[inline]
     fn add_assign(&mut self, rhs: Strength) {
@@ -93,7 +93,7 @@ impl std::ops::AddAssign<Strength> for Strength {
     }
 }
 
-impl std::ops::SubAssign<Strength> for Strength {
+impl core::ops::SubAssign<Strength> for Strength {
     /// Perform an in-place subtraction of two strengths, clipping the result to the legal range
     #[inline]
     fn sub_assign(&mut self, rhs: Strength) {
@@ -101,7 +101,7 @@ impl std::ops::SubAssign<Strength> for Strength {
     }
 }
 
-impl std::ops::Mul<f64> for Strength {
+impl core::ops::Mul<f64> for Strength {
     type Output = Strength;
 
     /// Multiply a strength by a scalar, clipping the result to the legal range
@@ -111,7 +111,7 @@ impl std::ops::Mul<f64> for Strength {
     }
 }
 
-impl std::ops::Mul<Strength> for f64 {
+impl core::ops::Mul<Strength> for f64 {
     type Output = Strength;
 
     /// Multiply a scalar by a strength, clipping the result to the legal range
@@ -121,7 +121,7 @@ impl std::ops::Mul<Strength> for f64 {
     }
 }
 
-impl std::ops::MulAssign<f64> for Strength {
+impl core::ops::MulAssign<f64> for Strength {
     /// Perform an in-place multiplication of a strength by a scalar, clipping the result to the
     /// legal range
     #[inline]
@@ -130,21 +130,21 @@ impl std::ops::MulAssign<f64> for Strength {
     }
 }
 
-impl std::cmp::Ord for Strength {
+impl core::cmp::Ord for Strength {
     #[inline]
-    fn cmp(&self, other: &Self) -> std::cmp::Ordering {
-        self.partial_cmp(other).unwrap()
+    fn cmp(&self, other: &Self) -> core::cmp::Ordering {
+        self.0.partial_cmp(&other.0).unwrap()
     }
 }
 
-impl std::cmp::PartialOrd for Strength {
+impl core::cmp::PartialOrd for Strength {
     #[inline]
-    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+    fn partial_cmp(&self, other: &Self) -> Option<core::cmp::Ordering> {
         Some(self.cmp(other))
     }
 }
 
-impl std::cmp::Eq for Strength {}
+impl core::cmp::Eq for Strength {}
 
 #[cfg(test)]
 mod tests {

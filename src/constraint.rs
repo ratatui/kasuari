@@ -1,7 +1,7 @@
-use std::{
+use alloc::sync::Arc;
+use core::{
     hash::{Hash, Hasher},
     ops,
-    sync::Arc,
 };
 
 use crate::{Expression, RelationalOperator, Strength, Term, Variable, WeightedRelation};
@@ -53,15 +53,15 @@ impl Constraint {
 
 impl Hash for Constraint {
     fn hash<H: Hasher>(&self, hasher: &mut H) {
-        use std::ops::Deref;
+        use core::ops::Deref;
         hasher.write_usize(self.inner.deref() as *const _ as usize);
     }
 }
 
 impl PartialEq for Constraint {
     fn eq(&self, other: &Constraint) -> bool {
-        use std::ops::Deref;
-        std::ptr::eq(self.inner.deref(), other.inner.deref())
+        use core::ops::Deref;
+        core::ptr::eq(self.inner.deref(), other.inner.deref())
     }
 }
 

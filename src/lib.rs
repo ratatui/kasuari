@@ -39,7 +39,7 @@
 //! self-explanatory):
 //!
 //! ```ignore
-//! use std::collections::HashMap;
+//! use hashbrown::HashMap;
 //! let mut names = HashMap::new();
 //! fn print_changes(names: &HashMap<Variable, &'static str>, changes: &[(Variable, f64)]) {
 //!     println!("Changes:");
@@ -167,7 +167,7 @@
 //! # use kasuari::{ Solver, Variable, Strength };
 //! # use kasuari::WeightedRelation::*;
 //! #
-//! # use std::collections::HashMap;
+//! # use hashbrown::HashMap;
 //! # let mut names = HashMap::new();
 //! # fn print_changes(names: &HashMap<Variable, &'static str>, changes: &[(Variable, f64)]) {
 //! #     println!("Changes:");
@@ -232,6 +232,9 @@
 //! not have any inherent knowledge of user interfaces, directions or boxes. Thus for use in a user
 //! interface this crate should ideally be wrapped by a higher level API, which is outside the scope
 //! of this crate.
+
+#![no_std]
+extern crate alloc;
 
 mod constraint;
 mod error;

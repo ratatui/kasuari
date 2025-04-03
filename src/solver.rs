@@ -1,9 +1,6 @@
-use std::{
-    cell::RefCell,
-    collections::{hash_map::Entry, HashMap, HashSet},
-    f64,
-    rc::Rc,
-};
+use alloc::{boxed::Box, rc::Rc, vec::Vec};
+use core::{cell::RefCell, f64};
+use hashbrown::{hash_map::Entry, HashMap, HashSet};
 
 use crate::{
     constraint::Constraint,

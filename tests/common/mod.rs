@@ -1,6 +1,8 @@
-use std::cell::RefCell;
-use std::collections::HashMap;
-use std::rc::Rc;
+extern crate alloc;
+
+use alloc::rc::Rc;
+use core::cell::RefCell;
+use hashbrown::HashMap;
 
 use kasuari::Variable;
 

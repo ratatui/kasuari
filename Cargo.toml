@@ -17,10 +17,11 @@ keywords = ["cassowary", "layout", "tui", "solver"]
 categories = ["algorithms", "command-line-interface", "graphics", "gui", "rendering"]
 
 [dependencies]
+hashbrown = "0.15.2"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
 rstest = "0.23.0"
-thiserror = "1.0.64"
+thiserror = "2.0.12"
 
 [dev-dependencies]
 fastrand = "2.1.1"
