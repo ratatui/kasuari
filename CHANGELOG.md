@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1](https://github.com/joshka/kasuari/compare/v0.4.0...v0.4.1) - 2025-04-04
+
+### Other
+
+- fix build badge
+
 ## [0.4.0](https://github.com/joshka/kasuari/compare/v0.4.0-alpha.2...v0.4.0) - 2025-04-04
 
 ### Added
