@@ -18,7 +18,7 @@
 - tweak cargo.toml, unignore cargo.lock
 - add simple ci workflow
 
-## Kasuari 0.4.0 (unreleased)
+## Kasuari 0.4.0-alpha.1
 
 This release is a fork of the library under a new name, `Kasuari`. The name change is to avoid confusion
 with the original `Cassowary-rs` library, which has been unmaintained since 2018. The name `Kasuari` is
