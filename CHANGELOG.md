@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.2](https://github.com/ratatui/kasuari/compare/v0.4.1...v0.4.2) - 2025-04-04
+
+### Other
+
+- fix release-plz check to ratatui-org
+- move to ratatui github org ([#7](https://github.com/ratatui/kasuari/pull/7))
+- configure dependabot
+- add coverage
+
 ## [0.4.1](https://github.com/joshka/kasuari/compare/v0.4.0...v0.4.1) - 2025-04-04
 
 ### Other
