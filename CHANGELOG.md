@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0-alpha.3](https://github.com/joshka/kasuari/compare/v0.4.0-alpha.2...v0.4.0-alpha.3) - 2025-04-04
+
+### Added
+
+- add const methods for Strength ops
+- make Strength new() and create() const
+
 ## [0.4.0-alpha.2](https://github.com/joshka/kasuari/compare/v0.4.0-alpha.1...v0.4.0-alpha.2) - 2025-04-04
 
 ### Added
