@@ -1,7 +1,7 @@
 [package]
 name = "kasuari"
 version = "0.4.1"
-authors = ["Dylan Ede <dylanede@googlemail.com>", "Josh McKinney"]
+authors = ["Dylan Ede <dylanede@googlemail.com>", "The Ratatui Developers"]
 edition = "2021"
 description = """
 A rust layout solver for GUIs, based on the Cassowary algorithm.
@@ -9,8 +9,7 @@ A fork of the unmaintained cassowary-rs crate with improvments and bug fixes.
 Kasuari is the indonesian name for the cassowary bird.
 """
 documentation = "https://docs.rs/kasuari"
-homepage = "https://github.com/joshka/kasuari"
-repository = "https://github.com/joshka/kasuari"
+repository = "https://github.com/ratatui/kasuari"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 keywords = ["cassowary", "layout", "tui", "solver"]
