@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.3](https://github.com/ratatui/kasuari/compare/v0.4.2...v0.4.3) - 2025-04-04
+
+### Other
+
+- use the same formatting as ratatui ([#9](https://github.com/ratatui/kasuari/pull/9))
+
 ## [0.4.2](https://github.com/ratatui/kasuari/compare/v0.4.1...v0.4.2) - 2025-04-04
 
 ### Other
