@@ -2,8 +2,8 @@ extern crate alloc;
 
 use alloc::rc::Rc;
 use core::cell::RefCell;
-use hashbrown::HashMap;
 
+use hashbrown::HashMap;
 use kasuari::Variable;
 
 #[derive(Clone, Default)]

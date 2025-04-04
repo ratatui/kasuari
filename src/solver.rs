@@ -1,11 +1,16 @@
-use alloc::{boxed::Box, rc::Rc, vec::Vec};
-use core::{cell::RefCell, f64};
-use hashbrown::{hash_map::Entry, HashMap, HashSet};
+use alloc::boxed::Box;
+use alloc::rc::Rc;
+use alloc::vec::Vec;
+use core::cell::RefCell;
+use core::f64;
 
+use hashbrown::hash_map::Entry;
+use hashbrown::{HashMap, HashSet};
+
+use crate::constraint::Constraint;
+use crate::row::{near_zero, Row, Symbol, SymbolKind};
+use crate::strength::Strength;
 use crate::{
-    constraint::Constraint,
-    row::{near_zero, Row, Symbol, SymbolKind},
-    strength::Strength,
     AddConstraintError, AddEditVariableError, Expression, RelationalOperator,
     RemoveConstraintError, RemoveEditVariableError, SuggestValueError, Term, Variable,
 };

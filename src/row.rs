@@ -1,4 +1,5 @@
-use hashbrown::{hash_map::Entry, HashMap};
+use hashbrown::hash_map::Entry;
+use hashbrown::HashMap;
 
 #[derive(Debug, Clone)]
 pub struct Row {

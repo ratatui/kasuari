@@ -1,4 +1,5 @@
-use kasuari::{Constraint, Solver, Strength, Variable, WeightedRelation::*};
+use kasuari::WeightedRelation::*;
+use kasuari::{Constraint, Solver, Strength, Variable};
 
 mod common;
 

@@ -1,5 +1,5 @@
-use kasuari::{Solver, Variable};
-use kasuari::{Strength, WeightedRelation::*};
+use kasuari::WeightedRelation::*;
+use kasuari::{Solver, Strength, Variable};
 
 mod common;
 use common::new_values;

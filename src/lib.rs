@@ -246,16 +246,14 @@ mod strength;
 mod term;
 mod variable;
 
-pub use self::{
-    constraint::{Constraint, PartialConstraint},
-    error::{
-        AddConstraintError, AddEditVariableError, RemoveConstraintError, RemoveEditVariableError,
-        SuggestValueError,
-    },
-    expression::Expression,
-    relations::{RelationalOperator, WeightedRelation},
-    solver::{InternalSolverError, Solver},
-    strength::Strength,
-    term::Term,
-    variable::Variable,
+pub use self::constraint::{Constraint, PartialConstraint};
+pub use self::error::{
+    AddConstraintError, AddEditVariableError, RemoveConstraintError, RemoveEditVariableError,
+    SuggestValueError,
 };
+pub use self::expression::Expression;
+pub use self::relations::{RelationalOperator, WeightedRelation};
+pub use self::solver::{InternalSolverError, Solver};
+pub use self::strength::Strength;
+pub use self::term::Term;
+pub use self::variable::Variable;

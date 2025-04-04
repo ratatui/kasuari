@@ -1,7 +1,5 @@
-use core::{
-    ops,
-    sync::atomic::{AtomicUsize, Ordering},
-};
+use core::ops;
+use core::sync::atomic::{AtomicUsize, Ordering};
 
 use crate::{Expression, Term};
 
@@ -273,8 +271,9 @@ impl ops::Div<f32> for Variable {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use alloc::vec;
+
+    use super::*;
 
     const LEFT: Variable = Variable(0);
     const RIGHT: Variable = Variable(1);

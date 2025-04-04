@@ -1,8 +1,6 @@
 use alloc::sync::Arc;
-use core::{
-    hash::{Hash, Hasher},
-    ops,
-};
+use core::hash::{Hash, Hasher};
+use core::ops;
 
 use crate::{Expression, RelationalOperator, Strength, Term, Variable, WeightedRelation};
 
