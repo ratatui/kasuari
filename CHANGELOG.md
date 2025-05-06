@@ -21,24 +21,24 @@
 - configure dependabot
 - add coverage
 
-## [0.4.1](https://github.com/joshka/kasuari/compare/v0.4.0...v0.4.1) - 2025-04-04
+## [0.4.1](https://github.com/ratatui/kasuari/compare/v0.4.0...v0.4.1) - 2025-04-04
 
 ### Other
 
 - fix build badge
 
-## [0.4.0](https://github.com/joshka/kasuari/compare/v0.4.0-alpha.2...v0.4.0) - 2025-04-04
+## [0.4.0](https://github.com/ratatui/kasuari/compare/v0.4.0-alpha.2...v0.4.0) - 2025-04-04
 
 ### Added
 
 - add const methods for Strength ops
 - make Strength new() and create() const
 
-## [0.4.0-alpha.2](https://github.com/joshka/kasuari/compare/v0.4.0-alpha.1...v0.4.0-alpha.2) - 2025-04-04
+## [0.4.0-alpha.2](https://github.com/ratatui/kasuari/compare/v0.4.0-alpha.1...v0.4.0-alpha.2) - 2025-04-04
 
 ### Added
 
-- make the crate `no_std` ([#2](https://github.com/joshka/kasuari/pull/2))
+- make the crate `no_std` ([#2](https://github.com/ratatui/kasuari/pull/2))
 
 ### Fixed
 
