@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.5](https://github.com/ratatui/kasuari/compare/v0.4.4...v0.4.5) - 2025-05-06
+
+### Other
+
+- fix repo links joshka->ratatui org ([#14](https://github.com/ratatui/kasuari/pull/14))
+
 ## [0.4.4](https://github.com/ratatui/kasuari/compare/v0.4.3...v0.4.4) - 2025-05-06
 
 ### Other
