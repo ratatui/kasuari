@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.4](https://github.com/ratatui/kasuari/compare/v0.4.3...v0.4.4) - 2025-05-06
+
+### Other
+
+- remove unused deps ([#12](https://github.com/ratatui/kasuari/pull/12))
+
 ## [0.4.3](https://github.com/ratatui/kasuari/compare/v0.4.2...v0.4.3) - 2025-04-04
 
 ### Other
