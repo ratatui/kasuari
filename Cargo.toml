@@ -23,7 +23,7 @@ categories = [
 rust-version = "1.78"
 
 [features]
-default = []
+default = ["std"]
 
 ## enables std
 std = ["thiserror/std"]
