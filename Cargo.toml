@@ -34,5 +34,3 @@ thiserror = { version = "2.0", default-features = false }
 
 [dev-dependencies]
 rstest = "0.25"
-
-
