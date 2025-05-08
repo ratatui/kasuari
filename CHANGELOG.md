@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.6](https://github.com/ratatui/kasuari/compare/v0.4.5...v0.4.6) - 2025-05-08
+
+### Added
+
+- *(no_std)* option to disable `std` ([#16](https://github.com/ratatui/kasuari/pull/16))
+
 ## [0.4.5](https://github.com/ratatui/kasuari/compare/v0.4.4...v0.4.5) - 2025-05-06
 
 ### Other
