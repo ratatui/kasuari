@@ -22,9 +22,17 @@ categories = [
 ]
 rust-version = "1.78"
 
+[features]
+default = []
+
+## enables std
+std = ["thiserror/std"]
+
 [dependencies]
 hashbrown = "0.15"
-thiserror = "2.0"
+thiserror = { version = "2.0", default-features = false }
 
 [dev-dependencies]
 rstest = "0.25"
+
+
