@@ -15,7 +15,7 @@ impl Values {
     }
     fn update_values(&self, changes: &[(Variable, f64)]) {
         for (var, value) in changes {
-            println!("{:?} changed to {:?}", var, value);
+            println!("{var:?} changed to {value:?}");
             self.0.borrow_mut().insert(*var, *value);
         }
     }
