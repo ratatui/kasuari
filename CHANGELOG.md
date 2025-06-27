@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.7](https://github.com/ratatui/kasuari/compare/v0.4.6...v0.4.7) - 2025-06-27
+
+### Other
+
+- *(gitignore)* add `.env` to `.gitignore` ([#22](https://github.com/ratatui/kasuari/pull/22))
+- use variables directly in the `format!` string ([#23](https://github.com/ratatui/kasuari/pull/23))
+- *(deps)* bump hashbrown from 0.15.3 to 0.15.4 in the rust-dependencies group ([#19](https://github.com/ratatui/kasuari/pull/19))
+- fix for code scanning alert no. 1: Workflow does not contain permissions ([#20](https://github.com/ratatui/kasuari/pull/20))
+
 ## [0.4.6](https://github.com/ratatui/kasuari/compare/v0.4.5...v0.4.6) - 2025-05-08
 
 ### Added
