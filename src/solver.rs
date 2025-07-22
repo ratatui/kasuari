@@ -647,18 +647,24 @@ impl Solver {
 
     /// Compute the entering variable for a pivot operation.
     ///
-    /// This method will return first symbol in the objective function which
+    /// This method will return a symbol in the objective function which
     /// is non-dummy and has a coefficient less than zero. If no symbol meets
     /// the criteria, it means the objective function is at a minimum, and an
     /// invalid symbol is returned.
     /// Could return an External symbol
     fn get_entering_symbol(objective: &Row) -> Symbol {
+        let mut entering = Symbol::invalid();
+        let mut min_id = usize::MAX;
+
         for (symbol, value) in &objective.cells {
             if symbol.kind() != SymbolKind::Dummy && *value < 0.0 {
-                return *symbol;
+                if symbol.id() < min_id {
+                    min_id = symbol.id();
+                    entering = *symbol;
+                }
             }
         }
-        Symbol::invalid()
+        entering
     }
 
     /// Compute the entering symbol for the dual optimize operation.
@@ -709,13 +715,17 @@ impl Solver {
     fn get_leaving_row(&mut self, entering: Symbol) -> Option<(Symbol, Box<Row>)> {
         let mut ratio = f64::INFINITY;
         let mut found = None;
+        let mut min_id = usize::MAX;
+
         for (symbol, row) in &self.rows {
             if symbol.kind() != SymbolKind::External {
                 let temp = row.coefficient_for(entering);
                 if temp < 0.0 {
                     let temp_ratio = -row.constant / temp;
-                    if temp_ratio < ratio {
+                    // in case of duplicates, choose symbol with the smallest id to prevent cycling
+                    if temp_ratio < ratio || (temp_ratio == ratio && symbol.id() < min_id) {
                         ratio = temp_ratio;
+                        min_id = symbol.id();
                         found = Some(*symbol);
                     }
                 }
@@ -814,5 +824,40 @@ impl Solver {
             .get(&v)
             .and_then(|s| self.rows.get(&s.1).map(|r| r.constant))
             .unwrap_or(0.0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use itertools::Itertools;
+
+    use super::*;
+    use crate::WeightedRelation::EQ;
+
+    #[test]
+    fn regression_18() {
+        const N: usize = 90;
+
+        let mut solver = Solver::new();
+
+        let variable_count = N * 2 + 2;
+        let variables = core::iter::repeat_with(Variable::new)
+            .take(variable_count)
+            .collect_vec();
+        let segments: Vec<(&Variable, &Variable)> = variables.iter().skip(1).tuples().collect_vec();
+
+        let constraints = alloc::vec![1.0; N];
+
+        for ((&left_constraint, &left_segment), (&right_constraint, &right_segment)) in
+            constraints.iter().zip(segments.iter()).tuple_combinations()
+        {
+            solver
+                .add_constraint(
+                    (right_constraint * (*left_segment.1 - *left_segment.0))
+                        | EQ(Strength::MEDIUM.div_f64(10.0))
+                        | (left_constraint * (*right_segment.1 - *right_segment.0)),
+                )
+                .unwrap();
+        }
     }
 }

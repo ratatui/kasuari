@@ -30,6 +30,10 @@ impl Symbol {
     pub fn kind(&self) -> SymbolKind {
         self.1
     }
+
+    pub fn id(&self) -> usize {
+        self.0
+    }
 }
 
 pub fn near_zero(value: f64) -> bool {
