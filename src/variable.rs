@@ -1,5 +1,5 @@
 use core::ops;
-use core::sync::atomic::{AtomicUsize, Ordering};
+use portable_atomic::{AtomicUsize, Ordering};
 
 use crate::{Expression, Term};
 
