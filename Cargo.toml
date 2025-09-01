@@ -30,7 +30,7 @@ std = ["thiserror/std"]
 
 [dependencies]
 hashbrown = "0.15"
-portable-atomic = "1.11.1"
+portable-atomic = "1.11"
 portable-atomic-util = { version = "0.2.4", features = ["alloc"] }
 thiserror = { version = "2.0", default-features = false }
 
