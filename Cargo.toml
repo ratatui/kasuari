@@ -27,11 +27,13 @@ default = ["std"]
 
 ## enables std
 std = ["thiserror/std"]
+## use portable-atomic to polyfill CAS atomics on targets that do not have them
+portable-atomic = ["dep:portable-atomic", "dep:portable-atomic-util"]
 
 [dependencies]
 hashbrown = "0.15"
-portable-atomic = "1.11"
-portable-atomic-util = { version = "0.2.4", features = ["alloc"] }
+portable-atomic = { version = "1.11", optional = true }
+portable-atomic-util = { version = "0.2.4", features = ["alloc"], optional = true }
 thiserror = { version = "2.0", default-features = false }
 
 [dev-dependencies]
