@@ -17,6 +17,22 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo build
       - run: cargo test
+  ci-nostd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          target: thumbv7em-none-eabi
+      - run: cargo build --target thumbv7em-none-eabi --no-default-features
+  ci-nostd-portableatomic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          target: riscv32imc-unknown-none-elf
+      - run: cargo build --target riscv32imc-unknown-none-elf --no-default-features --features portable-atomic,portable-atomic/unsafe-assume-single-core
   clippy:
     runs-on: ubuntu-latest
     steps:
