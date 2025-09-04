@@ -54,7 +54,7 @@ jobs:
         run: cargo build --target ${{ matrix.target }} ${{ matrix.args }}
 
       - name: Test
-        if: matrix.target != 'thumbv7em-none-eabi' && matrix.target != 'riscv32imc-unknown-none-elf'
+        if: matrix.run_tests
         run: cargo test --target ${{ matrix.target }}
   clippy:
     runs-on: ubuntu-latest
