@@ -26,7 +26,7 @@ rust-version = "1.78"
 default = ["std"]
 
 ## enables std
-std = ["thiserror/std"]
+std = ["thiserror/std", "portable-atomic?/std"]
 ## use portable-atomic to polyfill CAS atomics on targets that do not have them
 portable-atomic = ["dep:portable-atomic", "dep:portable-atomic-util"]
 
