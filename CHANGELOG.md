@@ -1,5 +1,24 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.4.8](https://github.com/ratatui/kasuari/compare/v0.4.7...v0.4.8) - 2025-09-04
+
+### Other
+
+- *(deps)* bump the rust-dependencies group across 1 directory with 2 updates ([#32](https://github.com/ratatui/kasuari/pull/32))
+- add smoke tests for no_std targets ([#31](https://github.com/ratatui/kasuari/pull/31))
+- use portable-atomic to allow use on targets without atomic instructions ([#30](https://github.com/ratatui/kasuari/pull/30))
+- *(deps)* bump actions/checkout from 4 to 5 in the github-actions group ([#27](https://github.com/ratatui/kasuari/pull/27))
+- *(deps)* bump the rust-dependencies group with 2 updates ([#28](https://github.com/ratatui/kasuari/pull/28))
+- *(deps)* bump rstest from 0.25.0 to 0.26.1 in the rust-dependencies group ([#25](https://github.com/ratatui/kasuari/pull/25))
+# Changelog
+
 ## [0.4.7](https://github.com/ratatui/kasuari/compare/v0.4.6...v0.4.7) - 2025-06-27
 
 ### Other
