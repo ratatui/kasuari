@@ -20,22 +20,27 @@ jobs:
             os: windows-2022
             target: x86_64-pc-windows-msvc
             args: ""
+            run_tests: true
           - name: std (macos)
             os: macos-latest
             target: x86_64-apple-darwin
             args: ""
+            run_tests: true
           - name: std (linux)
             os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             args: ""
+            run_tests: true
           - name: no_std (thumbv7em)
             os: ubuntu-latest
             target: thumbv7em-none-eabi
             args: "--no-default-features"
+            run_tests: false
           - name: no_std (riscv32 + portable-atomic)
             os: ubuntu-latest
             target: riscv32imc-unknown-none-elf
             args: "--no-default-features --features portable-atomic,portable-atomic/unsafe-assume-single-core"
+            run_tests: false
 
     name: ${{ matrix.name }}
     steps:
