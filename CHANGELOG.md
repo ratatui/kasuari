@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.9](https://github.com/ratatui/kasuari/compare/v0.4.8...v0.4.9) - 2025-09-04
+
+### Added
+
+- always use `std` atomic types when using `--all-features` ([#33](https://github.com/ratatui/kasuari/pull/33))
+
 ## [0.4.8](https://github.com/ratatui/kasuari/compare/v0.4.7...v0.4.8) - 2025-09-04
 
 ### Other

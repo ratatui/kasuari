@@ -1,6 +1,6 @@
 [package]
 name = "kasuari"
-version = "0.4.8"
+version = "0.4.9"
 authors = ["Dylan Ede <dylanede@googlemail.com>", "The Ratatui Developers"]
 edition = "2021"
 description = """
