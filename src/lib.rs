@@ -232,7 +232,8 @@
 //! not have any inherent knowledge of user interfaces, directions or boxes. Thus for use in a user
 //! interface this crate should ideally be wrapped by a higher level API, which is outside the scope
 //! of this crate.
-
+#![cfg_attr(feature = "document-features", doc = "\n## Features")]
+#![cfg_attr(feature = "document-features", doc = document_features::document_features!())]
 #![no_std]
 extern crate alloc;
 
