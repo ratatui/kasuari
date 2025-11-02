@@ -25,16 +25,28 @@ rust-version = "1.85"
 [features]
 default = ["std"]
 
-## enables std
+## Enables usage of standard library.
 std = ["thiserror/std", "portable-atomic?/std"]
-## use portable-atomic to polyfill CAS atomics on targets that do not have them
+
+## Enables fallback implementations of atomic types on targets without native support.
+## Requires adding `portable-atomic` crate as a dependency and setting proper `portable-atomic` feature flags by the
+## user based on target platform.
+## See [`portable-atomic` crate documentation] for more information.
+##
+## [`portable-atomic` crate documentation]: https://docs.rs/portable-atomic/latest/portable_atomic
 portable-atomic = ["dep:portable-atomic", "dep:portable-atomic-util"]
+
+document-features = ["dep:document-features"]
 
 [dependencies]
 hashbrown = "0.16"
 portable-atomic = { version = "1.11",  default-features = false, features = ["require-cas"], optional = true }
 portable-atomic-util = { version = "0.2.4", features = ["alloc"], optional = true }
 thiserror = { version = "2.0", default-features = false }
+document-features = { version = "0.2", optional = true }
+
+[package.metadata.docs.rs]
+all-features = true
 
 [dev-dependencies]
 rstest = "0.26"
