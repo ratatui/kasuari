@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.10](https://github.com/ratatui/kasuari/compare/v0.4.9...v0.4.10) - 2025-11-02
+
+### Other
+
+- *(deps)* bump thiserror from 2.0.16 to 2.0.17 in the rust-dependencies group ([#36](https://github.com/ratatui/kasuari/pull/36))
+- *(features)* improve feature flags docs ([#35](https://github.com/ratatui/kasuari/pull/35))
+- Fixed a bug that lead to the leaking of `Symbol`s in the objective function. ([#37](https://github.com/ratatui/kasuari/pull/37))
+- Bump MSRV to 1.85 to use clamp functions in const context ([#39](https://github.com/ratatui/kasuari/pull/39))
+
 ### Changed
 
 - bump the MSRV to 1.85 and rely on the standard `f64::clamp` in const contexts
