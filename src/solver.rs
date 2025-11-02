@@ -781,7 +781,8 @@ impl Solver {
     fn remove_constraint_effects(&mut self, constraint: &Constraint, tag: &Tag) {
         if tag.marker.kind() == SymbolKind::Error {
             self.remove_marker_effects(tag.marker, constraint.strength().value());
-        } else if tag.other.kind() == SymbolKind::Error {
+        }
+        if tag.other.kind() == SymbolKind::Error {
             self.remove_marker_effects(tag.other, constraint.strength().value());
         }
     }
