@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.11](https://github.com/ratatui/kasuari/compare/v0.4.10...v0.4.11) - 2025-11-29
+
+### Other
+
+- *(deps)* bump actions/checkout from 5 to 6 in the github-actions group ([#42](https://github.com/ratatui/kasuari/pull/42))
+- *(deps)* bump hashbrown from 0.16.0 to 0.16.1 in the rust-dependencies group ([#43](https://github.com/ratatui/kasuari/pull/43))
+- enable trusted publishing and normalize release-plz workflow ([#44](https://github.com/ratatui/kasuari/pull/44))
+
 ## [0.4.10](https://github.com/ratatui/kasuari/compare/v0.4.9...v0.4.10) - 2025-11-02
 
 ### Other

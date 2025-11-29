@@ -128,7 +128,7 @@ dependencies = [
 
 [[package]]
 name = "kasuari"
-version = "0.4.10"
+version = "0.4.11"
 dependencies = [
  "document-features",
  "hashbrown 0.16.1",
