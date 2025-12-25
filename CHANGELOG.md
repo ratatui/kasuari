@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.12](https://github.com/ratatui/kasuari/compare/v0.4.11...v0.4.12) - 2025-12-25
+
+### Other
+
+- *(deps)* bump portable-atomic from 1.11.1 to 1.12.0 in the rust-dependencies group ([#46](https://github.com/ratatui/kasuari/pull/46))
+
 ## [0.4.11](https://github.com/ratatui/kasuari/compare/v0.4.10...v0.4.11) - 2025-11-29
 
 ### Other
