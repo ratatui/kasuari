@@ -1,7 +1,5 @@
 use alloc::boxed::Box;
-use alloc::rc::Rc;
 use alloc::vec::Vec;
-use core::cell::RefCell;
 use core::f64;
 
 use hashbrown::hash_map::Entry;
@@ -34,6 +32,12 @@ struct Tag {
     other: Symbol,
 }
 
+#[derive(Copy, Clone)]
+enum OptimizeTarget {
+    Objective,
+    Artificial,
+}
+
 #[derive(Clone)]
 struct EditInfo {
     tag: Tag,
@@ -53,8 +57,8 @@ pub struct Solver {
     rows: HashMap<Symbol, Box<Row>>,
     edits: HashMap<Variable, EditInfo>,
     infeasible_rows: Vec<Symbol>, // never contains external symbols
-    objective: Rc<RefCell<Row>>,
-    artificial: Option<Rc<RefCell<Row>>>,
+    objective: Row,
+    artificial: Option<Row>,
     id_tick: usize,
 }
 
@@ -77,7 +81,7 @@ impl Solver {
             rows: HashMap::new(),
             edits: HashMap::new(),
             infeasible_rows: Vec::new(),
-            objective: Rc::new(RefCell::new(Row::new(0.0))),
+            objective: Row::new(0.0),
             artificial: None,
             id_tick: 1,
         }
@@ -141,8 +145,7 @@ impl Solver {
 
         // Optimizing after each constraint is added performs less aggregate work due to a smaller
         // average system size. It also ensures the solver remains in a consistent state.
-        let objective = self.objective.clone();
-        self.optimize(&objective)?;
+        self.optimize(OptimizeTarget::Objective)?;
         Ok(())
     }
 
@@ -176,8 +179,7 @@ impl Solver {
         // Optimizing after each constraint is removed ensures that the
         // solver remains consistent. It makes the solver api easier to
         // use at a small tradeoff for speed.
-        let objective = self.objective.clone();
-        self.optimize(&objective)?;
+        self.optimize(OptimizeTarget::Objective)?;
 
         // Check for and decrease the reference count for variables referenced by the constraint
         // If the reference count is zero remove the variable from the variable map
@@ -378,7 +380,7 @@ impl Solver {
         self.should_clear_changes = false;
         self.edits.clear();
         self.infeasible_rows.clear();
-        *self.objective.borrow_mut() = Row::new(0.0);
+        self.objective = Row::new(0.0);
         self.artificial = None;
         self.id_tick = 1;
     }
@@ -427,7 +429,7 @@ impl Solver {
             }
         }
 
-        let mut objective = self.objective.borrow_mut();
+        let objective = &mut self.objective;
 
         // Add the necessary slack, error, and dummy variables.
         let tag = match constraint.op() {
@@ -528,13 +530,12 @@ impl Solver {
         let art = Symbol::new(self.id_tick, SymbolKind::Slack);
         self.id_tick += 1;
         self.rows.insert(art, Box::new(row.clone()));
-        self.artificial = Some(Rc::new(RefCell::new(row.clone())));
+        self.artificial = Some(row.clone());
 
         // Optimize the artificial objective. This is successful
         // only if the artificial objective is optimized to zero.
-        let artificial = self.artificial.as_ref().unwrap().clone();
-        self.optimize(&artificial)?;
-        let success = near_zero(artificial.borrow().constant);
+        self.optimize(OptimizeTarget::Artificial)?;
+        let success = near_zero(self.artificial.as_ref().unwrap().constant);
         self.artificial = None;
 
         // If the artificial variable is basic, pivot the row so that
@@ -556,7 +557,7 @@ impl Solver {
         for row in self.rows.values_mut() {
             row.remove(art);
         }
-        self.objective.borrow_mut().remove(art);
+        self.objective.remove(art);
         Ok(success)
     }
 
@@ -580,9 +581,9 @@ impl Solver {
                 self.infeasible_rows.push(other_symbol);
             }
         }
-        self.objective.borrow_mut().substitute(symbol, row);
-        if let Some(artificial) = self.artificial.as_ref() {
-            artificial.borrow_mut().substitute(symbol, row);
+        self.objective.substitute(symbol, row);
+        if let Some(ref mut artificial) = self.artificial {
+            artificial.substitute(symbol, row);
         }
     }
 
@@ -590,9 +591,15 @@ impl Solver {
     ///
     /// This method performs iterations of Phase 2 of the simplex method
     /// until the objective function reaches a minimum.
-    fn optimize(&mut self, objective: &RefCell<Row>) -> Result<(), InternalSolverError> {
+    fn optimize(&mut self, target: OptimizeTarget) -> Result<(), InternalSolverError> {
         loop {
-            let entering = Solver::get_entering_symbol(&objective.borrow());
+            let entering = {
+                let objective = match target {
+                    OptimizeTarget::Objective => &self.objective,
+                    OptimizeTarget::Artificial => self.artificial.as_ref().unwrap(),
+                };
+                Solver::get_entering_symbol(objective)
+            };
             if entering.kind() == SymbolKind::Invalid {
                 return Ok(());
             }
@@ -672,10 +679,9 @@ impl Solver {
     fn get_dual_entering_symbol(&self, row: &Row) -> Symbol {
         let mut entering = Symbol::invalid();
         let mut ratio = f64::INFINITY;
-        let objective = self.objective.borrow();
         for (symbol, value) in &row.cells {
             if *value > 0.0 && symbol.kind() != SymbolKind::Dummy {
-                let coeff = objective.coefficient_for(*symbol);
+                let coeff = self.objective.coefficient_for(*symbol);
                 let r = coeff / *value;
                 if r < ratio {
                     ratio = r;
@@ -790,9 +796,9 @@ impl Solver {
     /// Remove the effects of an error marker on the objective function.
     fn remove_marker_effects(&mut self, marker: Symbol, strength: f64) {
         if let Some(row) = self.rows.get(&marker) {
-            self.objective.borrow_mut().insert_row(row, -strength);
+            self.objective.insert_row(row, -strength);
         } else {
-            self.objective.borrow_mut().insert_symbol(marker, -strength);
+            self.objective.insert_symbol(marker, -strength);
         }
     }
 
@@ -817,3 +823,9 @@ impl Solver {
             .unwrap_or(0.0)
     }
 }
+
+// test Solver is Send + Sync
+const _: () = {
+    const fn assert_send_sync<T: Send + Sync>() {}
+    assert_send_sync::<Solver>();
+};
