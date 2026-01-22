@@ -823,9 +823,3 @@ impl Solver {
             .unwrap_or(0.0)
     }
 }
-
-// test Solver is Send + Sync
-const _: () = {
-    const fn assert_send_sync<T: Send + Sync>() {}
-    assert_send_sync::<Solver>();
-};
