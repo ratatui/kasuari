@@ -39,7 +39,7 @@ portable-atomic = ["dep:portable-atomic", "dep:portable-atomic-util"]
 document-features = ["dep:document-features"]
 
 [dependencies]
-hashbrown = "0.16"
+hashbrown = "0.17"
 portable-atomic = { version = "1.13",  default-features = false, features = ["require-cas"], optional = true }
 portable-atomic-util = { version = "0.2.6", features = ["alloc"], optional = true }
 thiserror = { version = "2.0", default-features = false }
