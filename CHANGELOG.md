@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.13](https://github.com/ratatui/kasuari/compare/v0.4.12...v0.4.13) - 2026-04-21
+
+### Other
+
+- *(deps)* bump portable-atomic-util from 0.2.6 to 0.2.7 in the rust-dependencies group ([#57](https://github.com/ratatui/kasuari/pull/57))
+- *(deps)* bump hashbrown from 0.16.1 to 0.17.0 in the rust-dependencies group ([#55](https://github.com/ratatui/kasuari/pull/55))
+- *(deps)* bump codecov/codecov-action from 5 to 6 in the github-actions group ([#54](https://github.com/ratatui/kasuari/pull/54))
+- *(deps)* bump portable-atomic-util from 0.2.5 to 0.2.6 in the rust-dependencies group ([#52](https://github.com/ratatui/kasuari/pull/52))
+
 ## [0.4.12](https://github.com/ratatui/kasuari/compare/v0.4.11...v0.4.12) - 2026-03-13
 
 ### Added
