@@ -49,4 +49,4 @@ document-features = { version = "0.2", optional = true }
 all-features = true
 
 [dev-dependencies]
-rstest = "0.26"
+rstest = "0.27"
