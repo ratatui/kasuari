@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.14](https://github.com/ratatui/kasuari/compare/v0.4.13...v0.4.14) - 2026-10-26
+
+### Other
+
+- *(deps)* bump rstest from 0.27.0 to 0.28.0 in the rust-dependencies group ([#67](https://github.com/ratatui/kasuari/pull/67))
+
 ## [0.4.13](https://github.com/ratatui/kasuari/compare/v0.4.12...v0.4.13) - 2026-09-29
 
 ### Other
